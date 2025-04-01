@@ -1,0 +1,114 @@
+<!DOCTYPE html><html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doğum Günün Kutlu Olsun Aşkım!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            background-color: #ffdde1;
+            color: #ff007f;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 40px;
+            margin-top: 50px;
+        }
+        p {
+            font-size: 20px;
+            font-weight: bold;
+            color: #d6006e;
+        }
+        .container {
+            position: relative;
+            z-index: 2;
+        }
+        button {
+            padding: 15px 30px;
+            background-color: #ff007f;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #d6006e;
+        }
+        .photo {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 1s, transform 1s, top 2s ease-out, left 2s ease-out;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mutlu Yıllar <span id="name">Ayy qızımmmm</span>! 🎉🎂</h1>
+        <p>Bu birlikte geçirdiğimiz ilk doğum günü, iyi ki doğdun, iyi ki beraberiz Arzum! ❤</p>
+        <button onclick="playSongAndShowPhotos()">Sana Özel Bir Mesajım Var 💌</button>
+    </div>
+    <audio id="birthdaySong" controls>
+        <source src="https://www.youtube.com/watch?v=Y3RXd7EasIU&list=RDY3RXd7EasIU&start_radio=1" type="audio/mpedia">
+        <source src="Dolu Kadehi Ters Tut - Madem (Official Audio).mp3" type="audio/mpeg">
+    </audio>
+
+<script>
+    function playSongAndShowPhotos() {
+        var audio = document.getElementById("birthdaySong");
+        audio.play().catch(error => console.log("Ses oynatılamadı: " + error));
+        alert("Seni çok seviyorum! ❤ Nice mutlu yıllara birlikte...");
+        scatterPhotos();
+    }
+
+    function scatterPhotos() {
+        let photoUrls = [
+            "https://lh3.googleusercontent.com/d/1RzY2YFtwI-r_SdyuhCJqhY5DyxJ0RSq_",
+            "https://lh3.googleusercontent.com/d/1RzHRe7b8S32XdWv9Tw6q4rjA9DiUZcJr",
+            "https://lh3.googleusercontent.com/d/1RrjE732bXiPOKJB3XfaKbbNizxXvAf3O",
+            "https://lh3.googleusercontent.com/d/1RgdqO3UCaTquKUqH4HHw3ySD0UmvfSkS",
+            "https://lh3.googleusercontent.com/d/1RYuitwqKHJOfBdnhAc9QmsseRt1HkdNp",
+            "https://lh3.googleusercontent.com/d/1RHiaHEV3YBD_o-usx5-9o9G42vRnbxMX",
+            "https://lh3.googleusercontent.com/d/1RI0L5pAl08cHnzMG446jULpYQjC2sPaG",
+            "https://lh3.googleusercontent.com/d/1RDcbkjj51HJg9NQKj6Ya-6hwRlCKdHy9",
+            "https://lh3.googleusercontent.com/d/1RGq-rIzKYfqYfV7xSYIsHjcHGEERByMs",
+            "https://lh3.googleusercontent.com/d/1R9XDVgALx9ypLmvJGRQWXbhe_DsQjBRB",
+            "https://lh3.googleusercontent.com/d/1Qp0HkTe2tsMMiqT6uF68CDGn2WEAFExe",
+            "https://lh3.googleusercontent.com/d/1QneooAqlX-auivDSP-ktNKihzJxMVcll",
+            "https://lh3.googleusercontent.com/d/1QzMAE46jzAzxmbF--jaYavXZ-xph8IN0"
+        ];
+        
+        for (let i = 0; i < photoUrls.length; i++) {
+            let photo = document.createElement("img");
+            photo.src = photoUrls[i];
+            photo.classList.add("photo");
+            document.body.appendChild(photo);
+            
+            let x = Math.random() * (window.innerWidth - 150);
+            let y = Math.random() * (window.innerHeight - 150);
+            
+            photo.style.left = "50%";
+            photo.style.top = "50%";
+            
+            setTimeout(() => {
+                photo.style.left = x + "px";
+                photo.style.top = y + "px";
+                photo.style.opacity = 1;
+                photo.style.transform = "scale(1)";
+            }, 100);
+        }
+    }
+</script>
+
+</body>
+</html>
